@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+  * @author Rodrigo Silva
+ * @copyright Copyright (c) 2022 Rodrigo Silva (https://github.com/SilRodrigo)
+ * @package Rsilva_Vitrine
+ */
+-->
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="rsilva_vitine_widget" class="Rsilva\Vitrine\Block\Widget\Vitrine">
+        <label translate="true">Vitrine selector</label>
+        <description translate="true">Choose a vitrine to add to this block</description>
+        <parameters>
+            <parameter name="vitrine" xsi:type="select" required="true" source_model="Rsilva\Vitrine\Model\Widget\Config\Source\Select" visible="true">
+                <label translate="true">Vitrine</label>
+                <description>Select a vitrine to be displayed</description>
+            </parameter>            
+        </parameters>
+    </widget>
+</widgets>

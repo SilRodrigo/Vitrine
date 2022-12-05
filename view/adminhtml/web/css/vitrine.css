@@ -1,0 +1,187 @@
+/* 
+ * @author Rodrigo Silva
+ * @copyright Copyright (c) 2022 Rodrigo Silva (https://github.com/SilRodrigo)
+ * @package Rsilva_Base
+ */
+:root {
+    --pinpoint-size: 32px;
+    --pinpoint-color: #ffffffe3;
+    --pinpoint-color-hover: white;
+    --pinpoint-radius: 50%;
+}
+
+/* General */
+
+button.no-default-style {
+    background-image: none;
+    background: none;
+    border: 0;
+    box-shadow: none;
+    text-shadow: none;
+    font-weight: 400;
+    text-decoration: none;
+    padding: 0;
+}
+
+/*  */
+
+.vitrine-wrapper {
+    width: 70%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.vitrine-title {
+    font-size: 32px;
+}
+
+.vitrine-container {
+    position: relative;
+}
+
+.vitrine-container:hover {
+    cursor: copy;
+}
+
+#pinpoint_edit {
+    position: absolute;
+    z-index: -1;
+    cursor: default;
+    min-width: 340px;
+}
+
+#pinpoint_edit.active {
+    z-index: 1;
+}
+
+.pinpoint-mark {
+    width: var(--pinpoint-size);
+    height: var(--pinpoint-size);
+    background: var(--pinpoint-color);
+    border-radius: var(--pinpoint-radius);
+    box-shadow: 0px 0px 4px 4px rgb(0 0 0 / 20%);
+    transition: .25s;
+    position: absolute;
+}
+
+.pinpoint-mark:active{
+    transform: scale(1) !important;
+}
+
+.pinpoint-mark:hover,
+.pinpoint-mark.active {
+    cursor: pointer;
+    background-color: var(--pinpoint-color-hover);
+    transform: scale(1.08);
+}
+
+.pinpoint-content {
+    padding: 25px 20px;
+    background: white;
+    border-radius: 5px;
+    border: 1px solid #BDBDBD;
+    opacity: 0;
+    transition: .25s;
+    width: 350px;
+}
+
+#pinpoint_edit.active .pinpoint-content {
+    opacity: 1;
+}
+
+.pinpoint-content>.search-product-container {
+    position: relative;
+}
+
+.pinpoint-content>.search-product-container>.search-product>input {
+    width: 100%;
+    min-height: 36px;
+    padding: 5px;
+    padding-right: 25px;
+}
+
+.pinpoint-content>.search-product-container>.search-product>.search-btn {
+    position: absolute;
+    right: 2%;
+    top: 15%;
+    cursor: pointer;
+}
+
+.pinpoint-content>.search-product-container>.search-product>.search-btn::after {
+    font-size: 18px;
+    color: #757575;
+    content: '\e615';
+    font-family: 'luma-icons';
+}
+
+.pinpoint-content>.close {
+    position: absolute;
+    right: 5px;
+    top: 2px;
+}
+
+.pinpoint-content>.close>button::before {
+    color: grey;
+    content: '\e616';
+    font-family: 'luma-icons';
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+/* Product */
+
+.search-result {
+    max-height: 300px;
+    overflow: auto;
+}
+
+.search-result::-webkit-scrollbar {
+    width: 5px;
+}
+
+.search-result::-webkit-scrollbar-thumb,
+.search-result::-webkit-scrollbar-track {
+    border-left: 3px solid rgba(255, 255, 255, 0);
+    background-clip: padding-box;
+}
+
+.search-result::-webkit-scrollbar-track {
+    background-color: #dddddd;
+}
+
+.search-result::-webkit-scrollbar-thumb {
+    background-color: gray;
+}
+
+.product-container {
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+}
+
+.product-container .short-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.linked-product .actions button {
+    padding: 0px 5px;
+    border-radius: 3px;
+}
+
+.linked-product .actions button::after {
+    font-size: 14px;
+    color: #757575;
+    font-family: 'luma-icons';
+    vertical-align: middle;
+    font-weight: normal;
+}
+
+button#edit_product::after {
+    content: '\e601';
+}
+
+button#delete_product::after {
+    content: '\e604';
+}

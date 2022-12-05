@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+  * @author Rodrigo Silva
+ * @copyright Copyright (c) 2022 Rodrigo Silva (https://github.com/SilRodrigo)
+ * @package Rsilva_Vitrine
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Rsilva_Vitrine" setup_version="1.0.2">
+        <sequence>
+            <module name="Rsilva_Base"/>
+            <module name="Rsilva_ProductFilterApi"/>
+        </sequence>
+    </module>
+</config>

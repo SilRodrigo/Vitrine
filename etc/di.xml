@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<!--
+/**
+  * @author Rodrigo Silva
+ * @copyright Copyright (c) 2022 Rodrigo Silva (https://github.com/SilRodrigo)
+ * @package Rsilva_Vitrine
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!--  GRID  -->
+    <type name="Rsilva\Vitrine\Ui\DataProvider\ProductsDisplay\ListingDataProvider">
+        <plugin name="rsilva_vitrine_attributes" type="Rsilva\Vitrine\Plugin\AddAttributesToUiDataProvider"/>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="products_display_listing_data_source" xsi:type="string">ProductsDisplayCollection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="ProductsDisplayCollection" type="Rsilva\Vitrine\Ui\DataProvider\ProductsDisplay\Listing\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">rsilva_vitrine_products_display</argument>
+            <argument name="resourceModel" xsi:type="string">Rsilva\Vitrine\Model\ResourceModel\ProductsDisplay</argument>
+        </arguments>
+    </virtualType>
+    <!--  /GRID  -->
+</config>

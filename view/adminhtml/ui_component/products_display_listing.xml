@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+  * @author Rodrigo Silva
+ * @copyright Copyright (c) 2022 Rodrigo Silva (https://github.com/SilRodrigo)
+ * @package Rsilva_Base
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+  <argument name="data" xsi:type="array">
+    <item name="js_config" xsi:type="array">
+      <item name="provider" xsi:type="string">products_display_listing.products_display_listing_data_source</item>
+    </item>
+  </argument>
+  <settings>
+    <buttons>
+      <button name="add">
+        <url path="*/*/new"/>
+        <class>primary</class>
+        <label translate="true">New ambient</label>
+      </button>
+    </buttons>
+    <spinner>products_display_columns</spinner>
+    <deps>
+      <dep>products_display_listing.products_display_listing_data_source</dep>
+    </deps>
+  </settings>
+
+  <dataSource name="products_display_listing_data_source">
+    <argument name="dataProvider" xsi:type="configurableObject">
+      <argument name="class" xsi:type="string">Rsilva\Vitrine\Ui\DataProvider\ProductsDisplay\ListingDataProvider</argument>
+      <argument name="name" xsi:type="string">products_display_listing_data_source</argument>
+      <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
+      <argument name="requestFieldName" xsi:type="string">entity_id</argument>
+      <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+          <item name="update_url" xsi:type="url" path="mui/index/render"/>
+          <item name="storageConfig" xsi:type="array">
+            <item name="indexField" xsi:type="string">entity_id</item>
+          </item>
+        </item>
+      </argument>
+    </argument>
+    <argument name="data" xsi:type="array">
+      <item name="js_config" xsi:type="array">
+        <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+      </item>
+    </argument>
+  </dataSource>
+
+  <columns name="products_display_columns">
+    <argument name="data" xsi:type="array">
+      <item name="config" xsi:type="array">
+        <item name="resizeConfig" xsi:type="array">
+          <item name="enabled" xsi:type="boolean">true</item>
+        </item>
+      </item>
+    </argument>
+    <column name="entity_id">
+      <settings>
+        <label translate="true">Id</label>
+      </settings>
+    </column>
+    <!--  -->
+    <column name="image_url" class="Rsilva\Vitrine\Ui\Component\ProductsDisplay\Listing\Columns\Thumbnail" component="Magento_Ui/js/grid/columns/thumbnail">
+      <settings>
+        <altField>name</altField>
+        <hasPreview>1</hasPreview>
+        <label translate="true">Image Preview</label>
+        <sortable>false</sortable>
+      </settings>
+    </column>
+    <!--  -->
+    <column name="name">
+      <settings>
+        <label translate="true">Name</label>
+      </settings>
+    </column>
+
+    <actionsColumn name="actions" class="Rsilva\Vitrine\Ui\Component\ProductsDisplay\Listing\Columns\Actions">
+      <settings>
+        <indexField>entity_id</indexField>
+      </settings>
+    </actionsColumn>
+  </columns>
+</listing>

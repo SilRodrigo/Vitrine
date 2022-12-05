@@ -1,0 +1,44 @@
+<?php
+/* 
+ * @author Rodrigo Silva
+ * @copyright Copyright (c) 2022 Rodrigo Silva (https://github.com/SilRodrigo)
+ * @package Rsilva_Base
+ */
+
+$vitrine = $block->getVitrine();
+?>
+
+<?php if ($vitrine) : ?>
+    <div class="vitrine-container pos-relative">
+        <div>
+            <img src="<?= $vitrine->getImageUrl() ?>" data-mage-init='{"rsilva_vitrine":{"pinpoints": <?= $vitrine->getPinpoints() ?>}}'>
+        </div>
+
+        <div class="product-tag">
+            <div class="pos-relative">
+                <a data-prod_link target="_blank" href="">
+                    <div class="d-flex align-items-center">
+                        <div class="col-5 col-md-4">
+                            <img class="product-image" data-prod_image>
+                        </div>
+                        <div class="col-7 col-md-8 lpad-20">
+                            <div class="product-title">
+                                <span data-prod_title></span>
+                            </div>
+                            <div class="product-sku">
+                                <span data-prod_sku></span>
+                            </div>
+                            <div class="product-price tpad-5">
+                                <span data-prod_price></span>
+                                <span data-prod_special_price></span>
+                            </div>
+                            <div class="product-description pr-5">
+                                <span data-prod_description></span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

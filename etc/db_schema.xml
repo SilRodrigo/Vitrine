@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+  * @author Rodrigo Silva
+ * @copyright Copyright (c) 2022 Rodrigo Silva (https://github.com/SilRodrigo)
+ * @package Rsilva_Vitrine
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="rsilva_vitrine_products_display" resource="default" engine="innodb" comment="Products Display Table">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true" comment="Entity ID"/>
+        <column xsi:type="varchar" name="name" nullable="false"/>
+        <column xsi:type="varchar" name="image_name" nullable="false"/>
+        <column xsi:type="varchar" name="image_type" nullable="false"/>
+        <column xsi:type="int" name="image_size" nullable="false"/>
+        <column xsi:type="varchar" name="image_path" nullable="false"/>
+        <column xsi:type="varchar" name="image_file" nullable="false"/>
+        <column xsi:type="varchar" name="image_url" nullable="false"/>
+        <column xsi:type="varchar" name="image_preview_type" nullable="false"/>
+        <column xsi:type="varchar" name="image_id" nullable="false"/>
+        <column xsi:type="text" name="pinpoints" nullable="false"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+</schema>
