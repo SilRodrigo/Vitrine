@@ -49,18 +49,16 @@ class Save extends Action
         if ($postData) {
             try {
                 $this->model = $this->productsDisplayFactory->create();
-                $this->model->load($this->model->getEntityId());                
-                $postData[ProductsDisplay::IMAGE_NAME] = $postData['image'][0]['name'];
+                $this->model->load($this->model->getEntityId());
                 $postData[ProductsDisplay::IMAGE_TYPE] = $postData['image'][0]['type'];
+                $postData[ProductsDisplay::IMAGE_NAME] = $postData['image'][0]['name'];
                 $postData[ProductsDisplay::IMAGE_SIZE] = $postData['image'][0]['size'];
-                $postData[ProductsDisplay::IMAGE_PATH] = $postData['image'][0]['path'];
-                $postData[ProductsDisplay::IMAGE_FILE] = $postData['image'][0]['file'];
                 $postData[ProductsDisplay::IMAGE_URL] = $postData['image'][0]['url'];
                 $postData[ProductsDisplay::IMAGE_PREVIEW_TYPE] = $postData['image'][0]['previewType'];
                 $postData[ProductsDisplay::IMAGE_ID] = $postData['image'][0]['id'];
                 $this->model->setData($postData);
                 $this->model->save();
-                $this->messageManager->addSuccessMessage(__('You saved a new display.'));
+                $this->messageManager->addSuccessMessage(__('Saved successfully'));
             } catch (\Exception $e) {
                 $this->messageManager->addErrorMessage($e->getMessage());
                 return $this->resultRedirectFactory->create()

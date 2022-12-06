@@ -13,8 +13,6 @@
         <column xsi:type="varchar" name="image_name" nullable="false"/>
         <column xsi:type="varchar" name="image_type" nullable="false"/>
         <column xsi:type="int" name="image_size" nullable="false"/>
-        <column xsi:type="varchar" name="image_path" nullable="false"/>
-        <column xsi:type="varchar" name="image_file" nullable="false"/>
         <column xsi:type="varchar" name="image_url" nullable="false"/>
         <column xsi:type="varchar" name="image_preview_type" nullable="false"/>
         <column xsi:type="varchar" name="image_id" nullable="false"/>

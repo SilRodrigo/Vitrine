@@ -57,9 +57,9 @@ class Upload extends \Magento\Backend\App\Action
             $fileUploader->setAllowCreateFolders(true);
             $fileUploader->setFilesDispersion(false);
             /* $fileUploader->validate(); */
-            $result = $fileUploader->save($this->mediaDirectory->getAbsolutePath('tmp/imageUploader/images'));
+            $result = $fileUploader->save($this->mediaDirectory->getAbsolutePath('wysiwyg'));
             $result['url'] = $this->storeManager->getStore()->getBaseUrl(UrlInterface::URL_TYPE_MEDIA)
-                . 'tmp/imageUploader/images/' . ltrim(str_replace('\\', '/', $result['file']), '/');
+                . 'wysiwyg/' . ltrim(str_replace('\\', '/', $result['file']), '/');
             return $jsonResult->setData($result);
         } catch (LocalizedException $e) {
             return $jsonResult->setData(['errorcode' => 0, 'error' => $e->getMessage()]);

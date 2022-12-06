@@ -39,20 +39,24 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     {        
         $pinpoints = [];
 
-        foreach (json_decode($vitrine->getPinpoints() ?? [], true) as $pinpoint) {
-            $product = $this->_productRepository->getById($pinpoint['product']['entity_id']);
-            $image_thumbnail_path = $product->getImage();
-            $final_image_path = '/media/catalog/product' . $image_thumbnail_path;
-            $product->setData('complete_image_url', $final_image_path);
-            $product->setData('complete_page_url', $product->getProductUrl());
-            $product->setData('price', $product->getPrice());
-            $product->setData('formated_price', $this->_priceCurrency->format($product->getPrice(), false));
-            $product->setData('special_price', $product->getSpecialPrice());
-            $product->setData('formated_special_price', $this->_priceCurrency->format($product->getSpecialPrice(), false));
-            foreach ($pinpoint['product'] as $key => $value) {
-                $pinpoint['product'][$key] = $product->getData($key) ?? $value;
+        $pinpoints_data = $vitrine->getPinpoints();
+
+        if ($pinpoints_data){
+            foreach (json_decode($pinpoints_data, true) as $pinpoint) {
+                $product = $this->_productRepository->getById($pinpoint['product']['entity_id']);
+                $image_thumbnail_path = $product->getImage();
+                $final_image_path = '/media/catalog/product' . $image_thumbnail_path;
+                $product->setData('complete_image_url', $final_image_path);
+                $product->setData('complete_page_url', $product->getProductUrl());
+                $product->setData('price', $product->getPrice());
+                $product->setData('formated_price', $this->_priceCurrency->format($product->getPrice(), false));
+                $product->setData('special_price', $product->getSpecialPrice());
+                $product->setData('formated_special_price', $this->_priceCurrency->format($product->getSpecialPrice(), false));
+                foreach ($pinpoint['product'] as $key => $value) {
+                    $pinpoint['product'][$key] = $product->getData($key) ?? $value;
+                }
+                $pinpoints[] = $pinpoint;
             }
-            $pinpoints[] = $pinpoint;
         }
 
         $vitrine->setPinpoints(json_encode($pinpoints));
