@@ -65,8 +65,8 @@ define(['jquery',
         $('[data-prod_image]').attr("src", pinpoint.product.complete_image_url);
         $('[data-prod_title]').text(pinpoint.product.name);
         $('[data-prod_sku]').text(pinpoint.product.sku);
-        if (pinpoint.product.price) $('[data-prod_price]').text(pinpoint.product.formated_price);
-        if (pinpoint.product.special_price) $('[data-prod_special_price]').text(pinpoint.product.formated_special_price);
+        if (pinpoint.product.price) $('[data-prod_price]').text(pinpoint.product.formatted_price);
+        if (pinpoint.product.special_price) $('[data-prod_special_price]').text(pinpoint.product.formatted_special_price);
         if (!pinpoint.product.price && !pinpoint.product.special_price) $('[data-prod_price]').text($.mage.__('See more details'));
         $('[data-prod_description]').html(pinpoint.product.short_description);
     }

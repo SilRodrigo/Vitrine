@@ -49,9 +49,9 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
                 $product->setData('complete_image_url', $final_image_path);
                 $product->setData('complete_page_url', $product->getProductUrl());
                 $product->setData('price', $product->getPrice());
-                $product->setData('formated_price', $this->_priceCurrency->format($product->getPrice(), false));
+                $product->setData('formatted_price', $this->_priceCurrency->format($product->getPrice(), false));
                 $product->setData('special_price', $product->getSpecialPrice());
-                $product->setData('formated_special_price', $this->_priceCurrency->format($product->getSpecialPrice(), false));
+                $product->setData('formatted_special_price', $this->_priceCurrency->format($product->getSpecialPrice(), false));
                 foreach ($pinpoint['product'] as $key => $value) {
                     $pinpoint['product'][$key] = $product->getData($key) ?? $value;
                 }
