@@ -7,6 +7,8 @@
 
 This module allows you to upload an image and link products to it, placing it anywhere in your website with pagebuilder.
 
+![](https://github.com/SilRodrigo/Vitrine/blob/master/vitrine-gif.gif)
+
  - [Setup](#setup)
    - [Composer installation](#composer-installation)
    - [Setup the module](#setup-the-module)
