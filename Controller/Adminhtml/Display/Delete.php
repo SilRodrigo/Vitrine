@@ -2,7 +2,7 @@
 
 /**
  * @author Rodrigo Silva
- * @copyright Copyright (c) 2022 Rodrigo Silva (https://github.com/SilRodrigo)
+ * @copyright Copyright (c) 2023 Rodrigo Silva (https://github.com/SilRodrigo)
  * @package Rsilva_Vitrine
  */
 
@@ -13,6 +13,8 @@ use Rsilva\Vitrine\Controller\Adminhtml\Display;
 
 class Delete extends Display implements HttpPostActionInterface
 {
+    public const ADMIN_RESOURCE = 'Rsilva_Vitrine::delete';
+
     /**
      * @return \Magento\Backend\Model\View\Result\Redirect
      */

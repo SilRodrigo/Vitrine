@@ -45,6 +45,8 @@ define([
         delayed_search: null,
         currency_list: { "pt-BR": 'BRL', "us-EN": 'USD' },
         product_list: ko.observableArray([]),
+        current_page: ko.observable(1),
+        final_page: ko.observable(1),
 
         /* ---------- */
 
@@ -313,9 +315,30 @@ define([
         queryProductByName(name) {
             if (productApiService.isRequesting) return;
             this.clearProductList();
-            productApiService.queryProductByName(name, (response) => {
-                if (response?.collection.length > 0) this.product_list(response.collection);
+            productApiService.queryProductByName(name).then(response => {
+                this.setPaginatedProductList(response.collection, response.currentPage, response.finalPage);
             })
+        },
+
+        previousPage() {
+            if (this.current_page() < 2) return;
+            productApiService.previousPage().then(response => {
+                this.setPaginatedProductList(response.collection, response.currentPage, response.finalPage);
+            });
+        },
+
+        nextPage() {
+            if (this.current_page() >= this.final_page()) return;
+            productApiService.nextPage().then(response => {
+                this.setPaginatedProductList(response.collection, response.currentPage, response.finalPage);
+            });
+        },
+
+        setPaginatedProductList(products, current_page = 1, final_page = 1) {
+            this.current_page(current_page);
+            this.final_page(final_page);
+            if (products.length > 0) this.product_list(products);
+            $('body').trigger('processStop');
         },
 
         setProductToPin(product, event) {

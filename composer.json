@@ -3,8 +3,8 @@
     "description": "Vitrine module by https://github.com/SilRodrigo for Magento 2",
     "require": {
         "php": ">=7.4",
-        "rsilva/base": ">=1.0.0",
-        "rsilva/product-filter-api": ">=1.0.0"
+        "rsilva/base": ">=1.0.1",
+        "rsilva/product-filter-api": ">=1.0.1"
     },
     "type": "magento2-module",
     "license": [

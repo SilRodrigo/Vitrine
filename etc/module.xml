@@ -7,7 +7,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
-    <module name="Rsilva_Vitrine" setup_version="1.0.2">
+    <module name="Rsilva_Vitrine" setup_version="1.0.3">
         <sequence>
             <module name="Rsilva_Base"/>
             <module name="Rsilva_ProductFilterApi"/>

@@ -15,6 +15,6 @@
              sortOrder="1"
              action="rsilva_vitrine/display/index"
              parent="Rsilva_Base::menu"
-             resource="Rsilva_Vitrine::config"/>
+             resource="Rsilva_Vitrine::menu"/>
     </menu>
 </config>

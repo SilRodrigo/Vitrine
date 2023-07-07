@@ -1,0 +1,18 @@
+{
+    "rsilva_vitrine_products_display": {
+        "column": {
+            "entity_id": true,
+            "name": true,
+            "image_name": true,
+            "image_type": true,
+            "image_size": true,
+            "image_url": true,
+            "image_preview_type": true,
+            "image_id": true,
+            "pinpoints": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

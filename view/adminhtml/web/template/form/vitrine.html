@@ -2,7 +2,7 @@
 /* 
  * @author Rodrigo Silva
  * @copyright Copyright (c) 2022 Rodrigo Silva (https://github.com/SilRodrigo)
- * @package Rsilva_Base
+ * @package Rsilva_Vitrine
  */
  -->
 <!-- ko if: reference_image -->
@@ -25,29 +25,26 @@
                 <div class="pinpoint-content">
                     <div class="close">
                         <button type="button" class="no-default-style"
-                                data-bind="attr: {title: $t('Close')}, click: function(){cancelPinpointEdit(pinpoint_edit)}"
-                                title="Close">
+                            data-bind="attr: {title: $t('Close')}, click: function(){cancelPinpointEdit(pinpoint_edit)}"
+                            title="Close">
                         </button>
                     </div>
                     <div class="search-product-container">
                         <!-- ko if: (selected_pinpoint().length > 0 && current_mode() === 'NEW') -->
                         <div class="search-product pos-relative">
-                            <input id="pin_search_input" type="text"
-                                   data-bind="attr: { placeholder: $t('Search product') }, 
-                            event: { input: delayedSearchEvent }"
-                                   keyboard="{
+                            <input id="pin_search_input" type="text" data-bind="attr: { placeholder: $t('Search product') }, 
+                            event: { input: delayedSearchEvent }" keyboard="{
                                 13: keyPressSearchEvent
                             }">
                             <button type="button" class="search-btn no-default-style"
-                                    data-bind="click: function(){queryProductByName(pin_search_input.value)}"></button>
+                                data-bind="click: function(){queryProductByName(pin_search_input.value)}"></button>
                         </div>
                         <!--/ko-->
                         <!-- ko if: (product_list().length > 0) -->
                         <hr>
                         <div class="search-result">
                             <!-- ko foreach: product_list() -->
-                            <div class="product-container pointer d-flex pad-5 bmarg-5"
-                                 data-bind="attr: { 
+                            <div class="product-container pointer d-flex pad-5 bmarg-5" data-bind="attr: { 
                                     'data-entity_id': entity_id,
                                     'data-prod_type': type_id,                                    
                                  }, click: function(product, event){$parents[0].setProductToPin(product, event)} ">
@@ -61,7 +58,7 @@
                                     <div class="d-flex align-items-center">
                                         <!-- ko if: price -->
                                         <span class="bold"
-                                              data-bind="text: $parents[0].getFormattedPrice(price)"></span>
+                                            data-bind="text: $parents[0].getFormattedPrice(price)"></span>
                                         <span class="hpad-5"> - </span>
                                         <!--/ko-->
                                         <span class="fs-12" data-bind="text: sku"></span>
@@ -73,12 +70,23 @@
                             </div>
                             <!--/ko-->
                         </div>
+                        <!-- ko if: final_page() > 1 -->
+                        <div class="d-flex justify-content-between tpad-10">
+                            <button data-bind="
+                                i18n: 'Previous',
+                                attr: { disabled: current_page() <= 1 },
+                                click: previousPage"></button>
+                            <button data-bind="
+                                i18n: 'Next',
+                                attr: { disabled: current_page() >= final_page() },
+                                click: nextPage"></button>
+                        </div>
+                        <!--/ko-->
                         <!--/ko-->
                     </div>
                     <!-- ko if: (selected_pinpoint().length > 0 && current_mode() === 'EDIT') -->
                     <div class="linked-product">
-                        <div class="product-container d-flex pad-5"
-                             data-bind="attr: { 
+                        <div class="product-container d-flex pad-5" data-bind="attr: { 
                                         'data-entity_id': getSelectedPinpoint().entity_id,
                                         'data-prod_type': getSelectedPinpoint().type_id,                                    
                                      }">
@@ -89,7 +97,7 @@
                                 <div class="d-flex justify-content-end actions col-gapad-5">
                                     <button id="edit_product" data-bind="click: function(){editProduct()}"></button>
                                     <button id="delete_product"
-                                            data-bind="click: function(){deletePinpointModal()}"></button>
+                                        data-bind="click: function(){deletePinpointModal()}"></button>
                                 </div>
                                 <div class="fs-18">
                                     <span data-bind="text:getSelectedPinpoint().product.name"></span>
@@ -97,7 +105,7 @@
                                 <div class="d-flex align-items-center">
                                     <!-- ko if: getSelectedPinpoint().product.price -->
                                     <span class="bold"
-                                          data-bind="text: getSelectedPinpoint().product.formatted_price"></span>
+                                        data-bind="text: getSelectedPinpoint().product.formatted_price"></span>
                                     <span class="hpad-5"> - </span>
                                     <!--/ko-->
                                     <span class="fs-12" data-bind="text: getSelectedPinpoint().product.sku"></span>
@@ -118,11 +126,10 @@
 <!-- /ko -->
 
 <div class="admin__field _required"
-     data-bind="css: $data.additionalClasses, attr: {'data-index': index}, visible: visible" data-index="name">
+    data-bind="css: $data.additionalClasses, attr: {'data-index': index}, visible: visible" data-index="name">
     <div class="admin__field-control"
-         data-bind="css: {'_with-tooltip': $data.tooltip, '_with-reset': $data.showFallbackReset &amp;&amp; $data.isDifferedFromDefault}">
-        <input class="admin__control-text" type="hidden" afterRender="renderPinpoints" autocomplete="off"
-               data-bind="
+        data-bind="css: {'_with-tooltip': $data.tooltip, '_with-reset': $data.showFallbackReset &amp;&amp; $data.isDifferedFromDefault}">
+        <input class="admin__control-text" type="hidden" afterRender="renderPinpoints" autocomplete="off" data-bind="
         value: value,
         attr: {
             name: inputName,                        

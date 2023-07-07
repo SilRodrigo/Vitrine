@@ -2,7 +2,7 @@
 
 /**
  * @author Rodrigo Silva
- * @copyright Copyright (c) 2022 Rodrigo Silva (https://github.com/SilRodrigo)
+ * @copyright Copyright (c) 2023 Rodrigo Silva (https://github.com/SilRodrigo)
  * @package Rsilva_Vitrine
  */
 
@@ -16,6 +16,8 @@ use Magento\Framework\App\Action\HttpGetActionInterface;
 
 class Index extends Action implements HttpGetActionInterface
 {
+    public const ADMIN_RESOURCE = 'Rsilva_Vitrine::view';
+
     /**
      * @var PageFactory
      */
