@@ -9,11 +9,7 @@
 namespace Rsilva\Vitrine\Model;
 
 use Magento\Framework\Model\AbstractModel;
-use Magento\Framework\Model\Context;
-use Magento\Framework\Registry;
 use Rsilva\Vitrine\Model\ResourceModel\ProductsDisplay as DisplayResource;
-use Rsilva\Vitrine\Model\ResourceModel\ProductsDisplay\Collection;
-use Rsilva\Vitrine\Model\ResourceModel\ProductsDisplay\CollectionFactory;
 
 /**
  * @SuppressWarnings(PHPMD.LongVariable)

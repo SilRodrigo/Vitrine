@@ -2,7 +2,7 @@
 
 /**
  * @author Rodrigo Silva
- * @copyright Copyright (c) 2022 Rodrigo Silva (https://github.com/SilRodrigo)
+ * @copyright Copyright (c) 2023 Rodrigo Silva (https://github.com/SilRodrigo)
  * @package Rsilva_Vitrine
  */
 
@@ -11,7 +11,7 @@ namespace Rsilva\Vitrine\Controller\Adminhtml\Display;
 use Rsilva\Vitrine\Controller\Adminhtml\Display;
 use Rsilva\Vitrine\Model\ProductsDisplay;
 
-class Edit extends \Rsilva\Vitrine\Controller\Adminhtml\Display
+class Edit extends Display
 {
     /**
      * Backend session
@@ -67,7 +67,11 @@ class Edit extends \Rsilva\Vitrine\Controller\Adminhtml\Display
      */
     protected function _isAllowed()
     {
-        return $this->_authorization->isAllowed('Rsilva_Test::display');
+        $id = $this->getRequest()->getParam('entity_id');
+        if ($id) {
+            return $this->_authorization->isAllowed('Rsilva_Vitrine::edit');
+        }
+        return $this->_authorization->isAllowed('Rsilva_Vitrine::create');
     }
 
     /**
@@ -81,7 +85,7 @@ class Edit extends \Rsilva\Vitrine\Controller\Adminhtml\Display
         /** @var \Magento\Backend\Model\View\Result\Page|\Magento\Framework\View\Result\Page $resultPage */
         $resultPage = $this->_resultPageFactory->create();
         $resultPage->setActiveMenu('Rsilva_Vitrine::menu');
-        $resultPage->getConfig()->getTitle()->set(__('Display'));        
+        $resultPage->getConfig()->getTitle()->set(__('Display'));
         if ($id) {
             $productsDisplay->load($id);
             if (!$productsDisplay->getId()) {

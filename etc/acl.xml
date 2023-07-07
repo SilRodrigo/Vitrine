@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @author Rodrigo Silva
+ * @copyright Copyright (c) 2023 Rodrigo Silva (https://github.com/SilRodrigo)
+ * @package Rsilva_Base
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Rsilva_Base::menu">
+                    <resource id="Rsilva_Vitrine::menu" title="Vitrine" sortOrder="10">
+                        <resource id="Rsilva_Vitrine::view" title="View" sortOrder="10">
+                            <resource id="Rsilva_Vitrine::create" title="Create" sortOrder="10" />
+                            <resource id="Rsilva_Vitrine::edit" title="Edit" sortOrder="20" />
+                            <resource id="Rsilva_Vitrine::delete" title="Delete" sortOrder="30" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>
